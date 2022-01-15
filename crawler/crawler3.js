@@ -1,14 +1,12 @@
 const axios = require("axios");
+const {readFile} =require('fs/promises');
 
 (async () => {
   try {
-    // 根據變數去抓取資料
-    let stockNo = 2330;
-    let queryDate = "20220115";
+    const stockNo = await readFile('stock.txt', 'utf-8');
+    let queryDate = "20220115"
 
-    // let response = await axios.get(
-    //   `https://www.twse.com.tw/exchangeReport/STOCK_DAY?response=json&date=${queryDate}&stockNo=${stockNo}`
-    // );
+    // TODO: 從 stock.txt 中讀出檔案代碼
 
     let response = await axios.get(
       "https://www.twse.com.tw/exchangeReport/STOCK_DAY",
